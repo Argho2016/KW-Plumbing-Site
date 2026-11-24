@@ -1,0 +1,1 @@
+{"name":"kpp-site","version":"1.0.0","private":true,"description":"Kitchener Plumbing Pros concept site with booking backend","scripts":{"start":"node server.js","build":"node build-pages.mjs"},"engines":{"node":">=18"}}

@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kitchener Plumbing Pros · Plumbers in Kitchener-Waterloo</title>
+<meta name="description" content="Licensed, insured and locally owned plumbers for homes and businesses in Kitchener, Waterloo and Cambridge. A clear price before work begins, 24 hours a day.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23213E9A'/><rect x='5' y='20' width='22' height='5' rx='1.5' fill='%2300ADEF'/><rect x='8' y='8' width='5' height='12' fill='%23fff'/><rect x='19' y='8' width='5' height='12' fill='%23fff'/><rect x='7' y='7' width='7' height='3' fill='%23ED1B24'/><rect x='18' y='7' width='7' height='3' fill='%23ED1B24'/></svg>">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="site.css">
+<noscript><style>[data-sc-in],[data-sc-stagger]>*,[data-sc-cue]{opacity:1!important;transform:none!important}.kp-hero__beat{display:none}.kp-lines .l>span{translate:none!important}</style></noscript>
+<style>
+  /* ------------------------------------------- signature: the service line --
+     The cyan pipe from the logo, run down the page. Fill follows the scroll,
+     red couplings are the navigation, and the line stops at a leak during the
+     emergency act until it is sealed. */
+  .kp-line { position: fixed; z-index: 62; left: var(--kp-rail-x); top: 5.4rem; bottom: 1.4rem; width: 6px; translate: -50% 0; }
+  .kp-line__track { position: absolute; inset: 0; border-radius: 3px; background: rgb(238 242 251 / 0.16); overflow: hidden; }
+  .kp-line__fill { position: absolute; inset: 0; background: linear-gradient(to bottom, #00ADEF, #7FDBFB 50%, #00ADEF) 0 0 / 100% 220px; animation: kp-run 2.6s linear infinite; transform-origin: 50% 0; transform: scaleY(0); will-change: transform; }
+  .kp-line__node {
+    position: absolute; left: 50%; width: 16px; height: 10px; translate: -50% -50%;
+    padding: 0; border: 0; border-radius: 2px; background: var(--kp-red); cursor: pointer;
+    box-shadow: 0 1px 2px rgb(11 23 64 / 0.3);
+    transition: scale 160ms var(--sc-ease-out), background-color 200ms var(--sc-ease-out);
+  }
+  .kp-line__node::before { content: ""; position: absolute; inset: -14px -12px; }
+  .kp-line__node[aria-current="true"] { scale: 1.3; }
+  .kp-line__node span {
+    position: absolute; left: 26px; top: 50%; translate: 0 -50%; white-space: nowrap;
+    background: var(--kp-raised); color: var(--sc-ink); font-size: var(--sc-t-sm); font-weight: 500; line-height: 1;
+    padding: 0.5rem 0.7rem; border-radius: 8px; box-shadow: var(--sc-e2);
+    opacity: 0; pointer-events: none; transition: opacity 140ms var(--sc-ease-out);
+  }
+  .kp-line__node:focus-visible span { opacity: 1; }
+  @media (hover: hover) and (pointer: fine) { .kp-line__node:hover span { opacity: 1; } .kp-line__node:hover { scale: 1.3; } }
+  .kp-line__node.is-sealed { background: var(--kp-cyan); }
+  .kp-line__drips { position: absolute; left: 50%; width: 0; height: 0; opacity: 0; transition: opacity 240ms var(--sc-ease-out); }
+  .kp-line__drips i { position: absolute; left: -3px; top: 8px; width: 6px; height: 8px; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: var(--kp-cyan); animation: kp-drip 1.15s cubic-bezier(0.5, 0, 0.9, 0.6) infinite; }
+  .kp-line__drips i:nth-child(2) { animation-delay: 0.38s; left: 3px; }
+  .kp-line__drips i:nth-child(3) { animation-delay: 0.76s; left: -8px; }
+  [data-leak="1"] .kp-line__drips { opacity: 1; }
+  @keyframes kp-run { to { background-position: 0 220px; } }
+  @keyframes kp-drip { 0% { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; } 18% { opacity: 1; } 100% { transform: translate3d(0, 78px, 0) scale(1); opacity: 0; } }
+
+  /* ----------------------------------------------------------- 1 · hero -- */
+  .kp-hero__stage {
+    background: var(--sc-canvas);
+    --e: clamp(0, calc((var(--sc-p, 0) - 0.27) / 0.45), 1);
+    --out: clamp(0, calc((1 - var(--sc-p, 0)) / 0.03), 1);
+    --i: calc(1 - var(--e));
+  }
+  .kp-hero__photo {
+    position: absolute; inset: 0; z-index: 1;
+    clip-path: inset(calc(13vh * var(--i)) calc(5vw * var(--i)) calc(11vh * var(--i)) calc(53vw * var(--i)) round calc(22px * var(--i)));
+    will-change: clip-path;
+  }
+  .kp-hero__photo-in {
+    position: absolute; inset: -5%;
+    transform: translate3d(calc(18vw * var(--i) + var(--mx, 0) * -12px), calc(var(--my, 0) * -9px), 0) scale(calc(1 + 0.1 * var(--i)));
+    will-change: transform;
+  }
+  .kp-hero__photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 40% 42%; animation: kp-arrive 1500ms var(--sc-ease-out) both; }
+  @keyframes kp-arrive { from { opacity: 0; scale: 1.14; } }
+  .kp-hero__inset div { animation: kp-pop 900ms 500ms var(--sc-ease-out) both; }
+  @keyframes kp-pop { from { opacity: 0; scale: 0.92; translate: 0 24px; } }
+  .kp-hero__copy .sc-lede, .kp-hero__copy .kp-btn { animation: kp-fade 900ms 420ms var(--sc-ease-out) both; }
+  .kp-hero__copy .kp-btn { animation-delay: 560ms; }
+  @keyframes kp-fade { from { opacity: 0; translate: 0 14px; } }
+  .kp-hero__inset {
+    position: absolute; z-index: 2; left: 47vw; bottom: 6vh; width: 16vw; aspect-ratio: 1;
+    transform: translate3d(calc(var(--mx, 0) * 20px), calc(var(--e) * -46vh + var(--my, 0) * 15px), 0);
+    opacity: clamp(0, calc(1 - var(--e) * 1.7), 1);
+    will-change: transform, opacity;
+  }
+  .kp-hero__inset div { width: 100%; height: 100%; border-radius: var(--sc-r-lg); overflow: hidden; border: 5px solid #EEF2FB; box-shadow: var(--sc-e3); background: #EEF2FB; }
+  .kp-hero__inset img { width: 100%; height: 100%; object-fit: cover; }
+  .kp-hero__scrim {
+    position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: calc(var(--e) * var(--out));
+    background: radial-gradient(ellipse 84% 96% at 0% 100%, rgb(6 11 29 / 0.97) 0%, rgb(6 11 29 / 0.9) 50%, rgb(6 11 29 / 0.62) 72%, transparent 100%);
+  }
+  .kp-hero__copy { top: 50%; translate: 0 -46%; left: calc(var(--sc-gutter) + 0.5rem); max-width: 39vw; }
+  .kp-h1 { font-size: clamp(2.6rem, 5vw, 5.4rem); line-height: 0.98; }
+  .kp-hero__copy .sc-lede { margin-top: var(--sc-5); max-width: 34ch; color: var(--sc-ink-soft); }
+  .kp-hero__copy .kp-btn { margin-top: var(--sc-6); }
+  .kp-hero__beat { left: calc(var(--sc-gutter) + 0.5rem); max-width: min(40rem, 42vw); }
+  .kp-hero__beat .sc-display { max-width: 17ch; line-height: 1.04; }
+  .kp-hero__beat .sc-body { margin-top: var(--sc-4); color: var(--sc-ink); font-weight: 500; }
+  .kp-hero__stage::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 7rem; z-index: 4; pointer-events: none; opacity: var(--e); background: linear-gradient(to bottom, rgb(6 11 29 / 0.55), transparent); }
+  .kp-reduce .kp-hero__beat { display: none; }
+  .kp-reduce .kp-hero__stage { --e: 0; }
+
+  /* --------------------------------------------------------- 2 · triage -- */
+  .kp-triage { background: var(--sc-surface); position: relative; z-index: 4; border-top: 1px solid var(--sc-hairline); }
+  .kp-triage__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .kp-triage h2 { font-size: var(--sc-t-3xl); }
+  .kp-triage__pick > .sc-body { margin-top: var(--sc-4); }
+  .kp-opts { margin-top: var(--sc-7); border-top: 1px solid var(--sc-hairline-strong); }
+  .kp-opt {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%;
+    background: none; border: 0; border-bottom: 1px solid var(--sc-hairline-strong); cursor: pointer; text-align: left;
+    font-family: var(--sc-font-display); font-weight: 300; font-size: var(--sc-t-xl); letter-spacing: var(--sc-track-snug); line-height: 1.15;
+    color: var(--sc-ink-soft); padding: 1.05rem 0.25rem 1.05rem 0;
+    transition: color 160ms var(--sc-ease-out), padding-left 0s;
+  }
+  .kp-opt i { flex: none; width: 34px; height: 12px; border-radius: 3px; background: rgb(238 242 251 / 0.2); position: relative; transition: background-color 160ms var(--sc-ease-out); }
+  .kp-opt i::before, .kp-opt i::after { content: ""; position: absolute; top: -2px; width: 6px; height: 16px; border-radius: 2px; background: rgb(238 242 251 / 0.2); transition: background-color 160ms var(--sc-ease-out); }
+  .kp-opt i::before { left: 5px; } .kp-opt i::after { right: 5px; }
+  .kp-opt[aria-checked="true"] { color: var(--sc-ink); font-weight: 400; }
+  .kp-opt[aria-checked="true"] i { background: var(--kp-cyan); }
+  .kp-opt[aria-checked="true"] i::before, .kp-opt[aria-checked="true"] i::after { background: var(--kp-red); }
+  @media (hover: hover) and (pointer: fine) { .kp-opt:hover { color: var(--sc-ink); } }
+  .kp-panel { position: sticky; top: 6.5rem; background: var(--kp-raised); border-radius: var(--sc-r-lg); padding: clamp(1.1rem, 2vw, 1.6rem); box-shadow: var(--sc-edge), var(--sc-e1); }
+  .kp-panel__img { border-radius: var(--sc-r-md); overflow: hidden; aspect-ratio: 16 / 10; }
+  .kp-panel__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .kp-panel__body { padding: var(--sc-5) var(--sc-2) var(--sc-2); }
+  .kp-panel h3 { font-family: var(--sc-font-display); font-weight: 500; font-size: var(--sc-t-xl); letter-spacing: var(--sc-track-snug); line-height: 1.1; margin: 0; }
+  .kp-panel p { margin: var(--sc-3) 0 0; color: var(--sc-ink-soft); }
+  .kp-panel ul { list-style: none; padding: 0; margin: var(--sc-5) 0 var(--sc-6); border-top: 1px solid var(--sc-hairline); }
+  .kp-panel li { padding: 0.7rem 0; border-bottom: 1px solid var(--sc-hairline); font-weight: 500; }
+  .kp-panel__swap { transition: opacity 180ms var(--sc-ease-out); }
+  .kp-panel__swap.is-out { opacity: 0; }
+
+  /* ---------------------------------------------------------- 3 · price -- */
+  .kp-price { background: transparent; }
+  .kp-price__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2rem, 7vw, 7rem); align-items: center; }
+  .kp-price__fig { margin: 0; border-radius: var(--sc-r-lg); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--sc-e3); }
+  .kp-price__fig img { width: 100%; height: 100%; object-fit: cover; }
+  .kp-price .sc-lede { margin-top: var(--sc-6); }
+  .kp-price .sc-body { margin-top: var(--sc-4); }
+
+  /* ---------------------------------------------------------- 4 · visit -- */
+  .kp-visit { border-block: 1px solid var(--sc-hairline); background: var(--sc-surface); padding-block: clamp(4rem, 8vw, 8rem); }
+  .kp-visit h2 { font-size: var(--sc-t-sm); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--sc-accent); margin: 0 0 var(--sc-5); }
+  .kp-visit dl { margin: 0; border-top: 1px solid var(--sc-hairline-strong); }
+  .kp-visit__row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1rem, 4vw, 4rem); align-items: baseline; padding: clamp(1.1rem, 2.2vw, 1.9rem) 0; border-bottom: 1px solid var(--sc-hairline-strong); }
+  .kp-visit dt { font-family: var(--sc-font-display); font-weight: 300; font-size: var(--sc-t-2xl); letter-spacing: var(--sc-track-snug); line-height: 1.05; }
+  .kp-visit dd { margin: 0; color: var(--sc-ink-soft); font-size: var(--sc-t-lg); line-height: 1.45; max-width: 40ch; }
+
+  /* --------------------------------------------------- 5 · night (peak) -- */
+  .kp-night {
+    --sc-canvas: #03071A; --sc-ink: #EEF4FF; --sc-ink-soft: #B3C2E6;
+    --sc-hairline: rgb(238 244 255 / 0.16);
+    color: var(--sc-ink); background: var(--sc-canvas);
+  }
+  .kp-night__stage { background: var(--sc-canvas); }
+  .kp-night__zoom { position: absolute; inset: 0; transform: scale(calc(1.1 - 0.1 * var(--sc-p, 0))); will-change: transform; }
+  .kp-night__shade { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top right, rgb(3 7 26 / 0.94) 0%, rgb(3 7 26 / 0.82) 30%, rgb(3 7 26 / 0.42) 54%, transparent 76%); }
+  .kp-night .sc-copy { left: calc(var(--sc-gutter) + 0.5rem); }
+  .kp-clock { font-size: var(--sc-t-lg); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; margin: 0 0 var(--sc-4); color: var(--sc-ink-soft); display: flex; align-items: center; gap: 0.7rem; }
+  .kp-clock::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--kp-red); }
+  .kp-night h2, .kp-night h3 { font-weight: 300; margin: 0; }
+  .kp-night__line { font-size: var(--sc-t-3xl); max-width: 15ch; line-height: 1.02; }
+  .kp-night__ans > * + * { margin-top: var(--sc-5); }
+  .kp-night__ans .kp-tel { margin-top: var(--sc-5); }
+  .kp-night__ans p { margin-bottom: 0; color: var(--sc-ink); max-width: 36ch; font-size: var(--sc-t-lg); line-height: 1.45; }
+
+  /* ----------------------------------------------------------- 6 · jobs -- */
+  .kp-jobs { background: transparent; }
+  .kp-jobs__stage { display: flex; flex-direction: column; justify-content: center; gap: clamp(1.5rem, 4vh, 3rem); padding-top: 4.5rem; }
+  .kp-jobs__head { padding-inline: calc(var(--sc-gutter) + 0.5rem) var(--sc-gutter); display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1rem, 5vw, 5rem); align-items: end; }
+  .kp-jobs__head h2 { font-size: var(--sc-t-3xl); }
+  .kp-rail { align-items: stretch; gap: clamp(1rem, 1.6vw, 1.5rem); padding-inline: calc(var(--sc-gutter) + 0.5rem) var(--sc-gutter); }
+  .kp-job { flex: none; width: clamp(16.5rem, 21vw, 20rem); min-height: 17.5rem; background: var(--kp-raised); border-radius: var(--sc-r-lg); padding: 1.5rem 1.5rem 1.6rem; box-shadow: var(--sc-edge), var(--sc-e2); display: flex; flex-direction: column; }
+  .kp-job:nth-of-type(even) { translate: 0 1.75rem; }
+  .kp-job__who { font-size: var(--sc-t-sm); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sc-accent); margin: 0; }
+  .kp-job h3 { font-family: var(--sc-font-display); font-weight: 400; font-size: var(--sc-t-xl); line-height: 1.12; letter-spacing: var(--sc-track-snug); margin: var(--sc-4) 0 0; }
+  .kp-job p:last-child { margin: auto 0 0; padding-top: var(--sc-5); color: var(--sc-ink-soft); border-top: 1px solid var(--sc-hairline); }
+  .kp-job h3 + p { margin-top: var(--sc-6); }
+  .kp-rail__end { flex: none; width: min(22rem, 70vw); align-self: center; padding-left: clamp(1rem, 3vw, 3rem); }
+  .kp-rail__end p { margin: 0; font-size: var(--sc-t-lg); line-height: 1.4; }
+  .kp-rail__end a { display: inline-block; margin-top: var(--sc-4); font-weight: 600; color: var(--sc-accent); }
+
+  /* ----------------------------------------------------------- 7 · book -- */
+  .kp-book { background: var(--sc-surface); position: relative; border-top: 1px solid var(--sc-hairline); }
+  .kp-outlet { height: 12px; border-radius: 3px; background: var(--kp-cyan); position: relative; transform-origin: 0 50%; margin-left: calc(var(--kp-rail-x) - var(--sc-gutter)); margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+  .kp-outlet[data-sc-in] { opacity: 1; transform: scaleX(0); transition: transform 1100ms var(--sc-ease-out); }
+  .kp-outlet[data-sc-in].sc-in { transform: scaleX(1); }
+  .kp-outlet i { position: absolute; top: -3px; width: 9px; height: 18px; border-radius: 2px; background: var(--kp-red); }
+  .kp-outlet i:first-child { left: 18%; } .kp-outlet i:last-child { right: 0; width: 12px; }
+  .kp-book__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .kp-book h2 { font-size: var(--sc-t-2xl); line-height: 1.04; }
+  .kp-book .kp-tel { margin-top: var(--sc-7); font-size: var(--sc-t-2xl); }
+
+  /* -------------------------------------------------------------- phone -- */
+  @media (max-width: 860px) {
+    .kp-line { top: 4.9rem; bottom: 1rem; width: 4px; }
+    .kp-line__node { width: 12px; height: 8px; }
+    .kp-line__node::before { inset: -18px -8px -18px -10px; }
+    .kp-hero__photo { clip-path: inset(calc(55svh * var(--i)) calc(1.6rem * var(--i)) calc(3svh * var(--i)) calc(1.6rem * var(--i)) round calc(18px * var(--i))); }
+    .kp-hero__photo-in { transform: translate3d(0, calc(21svh * var(--i)), 0) scale(calc(1 + 0.08 * var(--i))); inset: -4%; }
+    .kp-hero__photo img { object-position: 42% 50%; }
+    .kp-hero__inset { left: auto; right: 2.4rem; bottom: auto; top: calc(55svh - 16vw); width: 30vw; transform: translate3d(0, calc(var(--e) * -30svh), 0); }
+    .kp-hero__inset div { border-width: 4px; border-radius: 14px; }
+    .kp-hero__scrim { background: linear-gradient(to top, rgb(6 11 29 / 0.97) 0%, rgb(6 11 29 / 0.9) 30%, rgb(6 11 29 / 0.55) 48%, transparent 66%); }
+    .kp-hero__copy { top: 6.4rem; translate: none; left: var(--sc-gutter); max-width: none; }
+    .kp-h1 { font-size: clamp(2.3rem, 10.6vw, 3.1rem); }
+    .kp-hero__copy .sc-lede { margin-top: var(--sc-4); font-size: 1.06rem; }
+    .kp-hero__copy .kp-btn { margin-top: var(--sc-5); }
+    .kp-hero__beat { left: var(--sc-gutter); bottom: 2.5rem; max-width: none; }
+    .kp-triage__grid, .kp-price__grid, .kp-book__grid { grid-template-columns: minmax(0, 1fr); }
+    .kp-panel { position: static; }
+    .kp-opt { font-size: 1.35rem; padding-block: 1rem; min-height: 3.5rem; }
+    .kp-price__fig { aspect-ratio: 5 / 4; }
+    .kp-visit__row { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
+    .kp-night__shade { background: linear-gradient(to top, rgb(3 7 26 / 0.95) 0%, rgb(3 7 26 / 0.86) 34%, rgb(3 7 26 / 0.5) 56%, transparent 78%); }
+    .kp-night .sc-copy { left: var(--sc-gutter); bottom: 3rem; }
+    .kp-night .kp-water img { object-position: 70% 50%; }
+    .kp-rail { padding-inline: var(--sc-gutter); }
+    .kp-jobs__head { grid-template-columns: minmax(0, 1fr); padding-inline: var(--sc-gutter); gap: 0.75rem; }
+    .kp-jobs__head h2 { font-size: var(--sc-t-2xl); }
+    .kp-jobs__stage { padding-top: 4.75rem; gap: 1.25rem; }
+    .kp-job { width: 74vw; min-height: 17rem; }
+    .kp-job:nth-of-type(even) { translate: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kp-line__drips i { animation: none; opacity: 1; }
+    .kp-night__zoom { transform: none; }
+    .kp-line__fill { animation: none; }
+    .kp-hero__photo img, .kp-hero__inset div, .kp-hero__copy .sc-lede, .kp-hero__copy .kp-btn { animation: none; }
+    .kp-outlet[data-sc-in] { transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!--@chrome-->
+
+<nav class="kp-line" aria-label="Sections">
+  <div class="kp-line__track"><div class="kp-line__fill"></div></div>
+  <div class="kp-line__drips" aria-hidden="true"><i></i><i></i><i></i></div>
+</nav>
+
+<main>
+
+  <!-- 1 · ARRIVAL: pin + independent planes. The window opens to the whole room. -->
+  <section class="kp-hero" id="top" data-sc-act="pin" data-sc-span="1.9" data-line="Welcome">
+    <div data-sc-stage class="kp-hero__stage">
+      <div class="kp-hero__photo"><div class="kp-hero__photo-in">
+        <img src="assets/hero.webp" width="1600" height="1068" alt="A plumber kneeling at an open sink cabinet, tightening a drain fitting with a red pipe wrench">
+      </div></div>
+      <div class="kp-hero__inset" aria-hidden="true"><div><img src="assets/valve.webp" width="720" height="720" alt=""></div></div>
+      <div class="kp-hero__scrim" aria-hidden="true"></div>
+
+      <div class="sc-copy kp-hero__copy" data-sc-cue="0 0.3 0 0.4">
+        <h1 class="sc-display kp-h kp-h1 kp-lines" data-kp-load><span class="l"><span>Plumbing,</span></span><span class="l"><span>handled <strong>properly.</strong></span></span></h1>
+        <p class="sc-lede">Licensed, insured and locally owned in Kitchener-Waterloo. A clear price before any work starts, at any hour.</p>
+        <a class="kp-btn" href="#book" data-sc-magnet="0.25">Book a service call</a>
+      </div>
+
+      <div class="sc-copy sc-copy--lead kp-hero__beat" data-sc-cue="0.68 0.965 0.3 0.12">
+        <p class="sc-display sc-display--lg kp-h">Under the sink. Behind the wall. Below the floor.</p>
+        <p class="sc-body">Homes and businesses across Kitchener, Waterloo and Cambridge.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · NAMING: flow + in. The visitor says what is wrong. -->
+  <section class="sc-section kp-triage" id="problem" data-sc-act="flow" data-line="What's wrong">
+    <div class="sc-wrap kp-triage__grid">
+      <div class="kp-triage__pick" data-sc-in data-sc-stagger="60">
+        <h2 class="sc-display kp-h kp-lines"><span class="l"><span>What's gone</span></span><span class="l"><span><strong>wrong?</strong></span></span></h2>
+        <p class="sc-body">Pick the closest one. It is all ordinary work for us, and your choice carries through to the booking form.</p>
+        <div class="kp-opts" role="radiogroup" aria-label="What has gone wrong">
+          <button class="kp-opt" type="button" role="radio" aria-checked="true" data-k="leak">A leak or a burst pipe<i aria-hidden="true"></i></button>
+          <button class="kp-opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-k="drain">A blocked drain<i aria-hidden="true"></i></button>
+          <button class="kp-opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-k="heat">No hot water<i aria-hidden="true"></i></button>
+          <button class="kp-opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-k="room">A bathroom or kitchen job<i aria-hidden="true"></i></button>
+          <button class="kp-opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-k="out">Basement, laundry or outdoors<i aria-hidden="true"></i></button>
+          <button class="kp-opt" type="button" role="radio" aria-checked="false" tabindex="-1" data-k="biz">It's for my business<i aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <aside class="kp-panel" data-sc-in data-light aria-live="polite">
+        <div class="kp-panel__img" data-sc-tilt="5"><img src="assets/faucet.webp" width="760" height="760" alt="A plumber's hands fitting a supply line to a chrome tap"></div>
+        <div class="kp-panel__body kp-panel__swap">
+          <h3 data-kp="title">Leaks and burst pipes</h3>
+          <p data-kp="body">We find the source, stop the water, then repair or replace the pipe, from a single joint to a full re-pipe.</p>
+          <ul data-kp="list"><li>Leak inspection and detection</li><li>Pipe repair and replacement</li><li>Frozen and burst pipes</li></ul>
+          <a class="kp-btn" href="#book">Book a service call</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 3 · PRICE: reveal. Unknown becomes known. -->
+  <section class="sc-section kp-price" data-sc-act="flow" data-line="The price">
+    <div class="sc-wrap kp-price__grid">
+      <figure class="kp-price__fig" data-sc-reveal="up" data-sc-reveal-at="0.14 0.44">
+        <img src="assets/wrench.webp" width="800" height="1068" alt="A pipe wrench closing on the chrome trap beneath a basin">
+      </figure>
+      <div data-sc-in data-sc-stagger="70">
+        <h2 class="sc-display sc-display--lg kp-h kp-lines"><span class="l"><span>The price</span></span><span class="l"><span>comes <strong>first.</strong></span></span></h2>
+        <p class="sc-lede">Before a wrench is lifted you get a clear, honest figure for the repair or the installation.</p>
+        <p class="sc-body">Your plumber explains what needs to happen and why, so nothing on the invoice is news to you. Every plumber on the job is licensed and insured.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · VISIT: flow, deliberately still. The quiet before the peak. -->
+  <section class="kp-visit" data-sc-act="flow" data-line="A visit">
+    <div class="sc-wrap" data-sc-in data-sc-stagger="60">
+      <h2>How a visit goes</h2>
+      <dl>
+        <div class="kp-visit__row"><dt>On time.</dt><dd>Your plumber arrives when they said they would. If an emergency holds them up, you hear from them first.</dd></div>
+        <div class="kp-visit__row"><dt>In plain words.</dt><dd>What is wrong, what it takes to fix and what it costs, explained before the work begins.</dd></div>
+        <div class="kp-visit__row"><dt>Built to last.</dt><dd>Quality parts and a repair the company stands behind.</dd></div>
+        <div class="kp-visit__row"><dt>Left spotless.</dt><dd>They clean up behind themselves before they go.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 5 · EMERGENCY: pin + kinetic. The peak, the only dark act, the largest span. -->
+  <section class="kp-night" id="emergency" data-sc-act="pin" data-sc-span="3.8" data-line="Emergency">
+    <div data-sc-stage class="kp-night__stage">
+      <div class="kp-night__zoom"><div class="kp-water" aria-hidden="true"><img src="assets/night.webp" width="1600" height="1068" alt=""><img src="assets/night.webp" width="1600" height="1068" alt=""></div></div>
+      <div class="kp-night__shade" aria-hidden="true"></div>
+
+      <div class="sc-copy sc-copy--lead" data-sc-cue="0 0.3 0 0.3">
+        <p class="kp-clock"><span data-kp-clock>3:07</span> a.m.</p>
+        <h2 class="sc-display sc-display--xl">A pipe just burst.</h2>
+      </div>
+      <div class="sc-copy sc-copy--lead" data-sc-cue="0.27 0.57 0.25 0.25">
+        <p class="sc-display kp-night__line kp-h">Water does not wait for office hours.</p>
+      </div>
+      <div class="sc-copy sc-copy--lead kp-night__ans">
+        <h3 class="sc-display sc-display--xl" data-sc-cue="0.55 1 0.3 0.08" data-sc-kinetic="words">We pick up.</h3>
+        <div data-sc-cue="0.62 1 0.3 0.08">
+          <p>A 24-hour emergency line, seven days a week, weekends and holidays included.</p>
+          <a class="kp-tel" href="tel:+12262404250" data-kp-tel>(226) 240-4250</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · NEIGHBOURS: pan. Ten real jobs, labelled the same way. -->
+  <section class="kp-jobs" id="reviews" data-sc-act="pan" data-sc-span="3" data-line="Reviews">
+    <div data-sc-stage class="kp-jobs__stage">
+      <div class="kp-jobs__head">
+        <h2 class="sc-display kp-h">Ten jobs, ten <strong>Google reviews.</strong></h2>
+        <p class="sc-body">What each customer called about and what they noticed, summarised in our words. The originals are on Google.</p>
+      </div>
+      <div class="kp-rail" data-sc-pan="0">
+        <article class="kp-job" data-light><p class="kp-job__who">Derya H.</p><h3>An overflowing toilet</h3><p>Fixed quickly and calmly while the household was panicking.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">Athena P.</p><h3>A major basement leak</h3><p>Help arrived right away. Friendly, clean, no fuss.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">Dimislayer, The S.</p><h3>A broken toilet and a flooded basement</h3><p>No judgement about the attempted home repair. It simply got fixed.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">keesha C.</p><h3>A washing machine drain connection</h3><p>The job was explained and quoted first, and the area left spotless.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">MØHÃMMÃĐ Ã.</p><h3>A radiant heating fault</h3><p>Helpful throughout, including when the job turned awkward.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">Konal D.</p><h3>A leaking hose bib and shut-off valve</h3><p>Clear communication and a thorough approach.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">Robel O.</p><h3>A plugged house drain</h3><p>On site shortly after the call, with sound advice and quick work.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">Saad S.</p><h3>Several jobs, a repeat customer</h3><p>On time, on budget and flexible when plans changed.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">Praveen S.</p><h3>An emergency leak and an overflowing sink</h3><p>Professional, honest and fairly priced.</p></article>
+        <article class="kp-job" data-light><p class="kp-job__who">Shubhneet A.</p><h3>A basement pipe leak and flooding</h3><p>The place was left spotless and expectations were exceeded.</p></article>
+        <div class="kp-rail__end">
+          <p>Kitchener, Waterloo and Cambridge. Homes, condos, restaurants, offices and shops.</p>
+          <a href="https://kwplumbingpros.com/" rel="noopener">Read the reviews in full</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · BOOKING: flow. The line turns the corner and stops here. -->
+  <section class="sc-section kp-book" id="book" data-sc-act="flow" data-line="Book">
+    <div class="sc-wrap">
+      <div class="kp-outlet" data-sc-in aria-hidden="true"><i></i><i></i></div>
+      <div class="kp-book__grid">
+        <div data-sc-in data-sc-stagger="60">
+          <h2 class="sc-display kp-h kp-lines"><span class="l"><span>Tell us what's wrong.</span></span><span class="l"><span>Hear the price <strong>first.</strong></span></span></h2>
+          <a class="kp-tel" href="tel:+12262404250">(226) 240-4250</a>
+          <dl class="kp-facts">
+            <div><dt>Hours</dt><dd>24 hours a day, 7 days a week</dd></div>
+            <div><dt>Area</dt><dd>Kitchener, Waterloo and Cambridge</dd></div>
+            <div><dt>Address</dt><dd>1201-812 King St W<br>Kitchener ON N2G 1E9</dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:info@kwplumbingpros.com">info@kwplumbingpros.com</a></dd></div>
+          </dl>
+        </div>
+<!--@form-->
+      </div>
+    </div>
+  </section>
+
+</main>
+<!--@footer-->
+
+<script src="scrollcraft.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var hero = document.querySelector('.kp-hero');
+  var night = document.querySelector('.kp-night');
+
+  // Reduced motion keeps the composed window and drops the opening move.
+  if (reduce) {
+    document.documentElement.classList.add('kp-reduce');
+    hero.setAttribute('data-sc-span', '1.25');
+    hero.querySelector('.kp-hero__copy').setAttribute('data-sc-cue', '0 1 0 0');
+  }
+
+  ScrollCraft.mount(document.body);
+
+  /* ---------------------------------------------------- the service line -- */
+  var line = document.querySelector('.kp-line');
+  var fill = line.querySelector('.kp-line__fill');
+  var drips = line.querySelector('.kp-line__drips');
+  var stops = [].map.call(document.querySelectorAll('[data-line]'), function (el) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'kp-line__node';
+    var s = document.createElement('span'); s.textContent = el.getAttribute('data-line'); b.appendChild(s);
+    b.addEventListener('click', function () {
+      var pinned = el.getAttribute('data-sc-act') !== 'flow';
+      window.scrollTo({ top: el.offsetTop + (pinned ? 2 : -8), behavior: reduce ? 'auto' : 'smooth' });
+    });
+    line.appendChild(b);
+    return { el: el, btn: b, f: 0 };
+  });
+  var nightStop = stops.filter(function (s) { return s.el === night; })[0];
+  var total = 1, shown = 0, target = 0, leaking = false, sealed = false;
+  var clock = document.querySelector('[data-kp-clock]');
+
+  function measure() {
+    total = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
+    stops.forEach(function (s) {
+      s.f = Math.min(Math.max(s.el.offsetTop / total, 0), 1);
+      s.btn.style.top = (s.f * 100).toFixed(3) + '%';
+    });
+    drips.style.top = (nightStop.f * 100).toFixed(3) + '%';
+  }
+  function read() {
+    var y = window.scrollY;
+    target = Math.min(Math.max(y / total, 0), 1);
+    var np = (y - night.offsetTop) / Math.max(night.offsetHeight - innerHeight, 1);
+    var nowLeak = np > 0.004 && np < 0.55;
+    var nowSealed = np >= 0.55;
+    if (nowLeak) target = Math.min(target, nightStop.f + 0.004);
+    if (nowLeak !== leaking) { leaking = nowLeak; document.documentElement.setAttribute('data-leak', leaking ? '1' : '0'); }
+    if (nowSealed !== sealed) { sealed = nowSealed; nightStop.btn.classList.toggle('is-sealed', sealed); }
+    if (clock) {
+      var m = 7 + Math.max(0, Math.min(2, Math.floor(np / 0.2)));
+      var t = '3:0' + m; if (clock.textContent !== t) clock.textContent = t;
+    }
+    var cur = 0;
+    for (var i = 0; i < stops.length; i++) if (y >= stops[i].el.offsetTop - innerHeight * 0.5) cur = i;
+    stops.forEach(function (s, i) { s.btn.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
+  }
+  function frame() {
+    shown += (target - shown) * (reduce ? 1 : 0.16);
+    if (Math.abs(target - shown) < 0.0004) shown = target;
+    fill.style.transform = 'scaleY(' + shown.toFixed(4) + ')';
+    if (heroStage && fine && !reduce) {
+      mx += (tx - mx) * 0.08; my += (ty - my) * 0.08;
+      heroStage.style.setProperty('--mx', mx.toFixed(3));
+      heroStage.style.setProperty('--my', my.toFixed(3));
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ------------------------------ hero: the room leans with the pointer -- */
+  var heroStage = hero.querySelector('[data-sc-stage]');
+  var mx = 0, my = 0, tx = 0, ty = 0;
+  if (fine && !reduce) {
+    heroStage.addEventListener('pointermove', function (e) {
+      var r = heroStage.getBoundingClientRect();
+      tx = (e.clientX - r.left) / r.width * 2 - 1;
+      ty = (e.clientY - r.top) / r.height * 2 - 1;
+    });
+    heroStage.addEventListener('pointerleave', function () { tx = 0; ty = 0; });
+  }
+
+  measure(); read();
+  addEventListener('scroll', read, { passive: true });
+  addEventListener('resize', function () { measure(); read(); });
+  addEventListener('load', function () { measure(); read(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); read(); });
+  requestAnimationFrame(frame);
+
+  /* --------------------------- pinned acts: park focus where the cue is -- */
+  var tel = document.querySelector('[data-kp-tel]');
+  tel.addEventListener('focus', function () {
+    var span = night.offsetHeight - innerHeight;
+    var np = (window.scrollY - night.offsetTop) / Math.max(span, 1);
+    // after the engine's own focus handler, which cannot centre a sticky stage
+    if (np < 0.74 || np > 0.9) setTimeout(function () { window.scrollTo({ top: night.offsetTop + span * 0.82, behavior: 'instant' }); }, 40);
+  });
+  hero.querySelector('.kp-btn').addEventListener('focus', function () {
+    if (!reduce && window.scrollY > hero.offsetHeight * 0.08) window.scrollTo({ top: 0, behavior: 'instant' });
+  });
+
+  /* ------------------------------------------------------------- triage -- */
+  var DATA = {
+    leak:  ['Leaks and burst pipes', 'We find the source, stop the water, then repair or replace the pipe, from a single joint to a full re-pipe.', ['Leak inspection and detection', 'Pipe repair and replacement', 'Frozen and burst pipes']],
+    drain: ['Blocked drains and sewer lines', 'Slow and backed-up drains are cleared, then the line is checked so the problem does not come straight back.', ['Drain and sewer cleaning', 'Hydro-jetting and rooter service', 'Camera inspections']],
+    heat:  ['No hot water', 'Leaking, noisy or cold water heaters are diagnosed quickly, then repaired or replaced on an honest recommendation.', ['Water heater repair', 'New installations', 'Tank and tankless models']],
+    room:  ['Bathrooms and kitchens', 'Repairs and new fixtures plumbed in properly, with low pressure traced back to its cause.', ['Toilets, tubs, showers and sinks', 'Faucets and fixtures', 'Dishwasher and appliance hookups']],
+    out:   ['Basement, laundry and outdoors', 'Washer connections, basement lines and the taps outside the house.', ['Laundry connections', 'Basement plumbing', 'Hose bibs and outdoor taps']],
+    biz:   ['Plumbing for a business', 'Washrooms, kitchens and the particular needs of restaurants, offices, salons and shops.', ['Clogged, leaking and backed-up lines', 'New fixture installation', 'Staff and customer washrooms']]
+  };
+  var opts = [].slice.call(document.querySelectorAll('.kp-opt'));
+  var swap = document.querySelector('.kp-panel__swap');
+  var select = document.querySelector('[data-kp-select]');
+  var swapTimer;
+  function paint(k) {
+    var d = DATA[k];
+    swap.querySelector('[data-kp="title"]').textContent = d[0];
+    swap.querySelector('[data-kp="body"]').textContent = d[1];
+    var ul = swap.querySelector('[data-kp="list"]'); ul.textContent = '';
+    d[2].forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+  }
+  function choose(k, fromSelect) {
+    opts.forEach(function (o) {
+      var on = o.getAttribute('data-k') === k;
+      o.setAttribute('aria-checked', on ? 'true' : 'false'); o.tabIndex = on ? 0 : -1;
+    });
+    if (!fromSelect) {
+      var op = select.querySelector('[data-k="' + k + '"]'); if (op) select.value = op.value;
+    }
+    clearTimeout(swapTimer);
+    if (reduce) { paint(k); return; }
+    swap.classList.add('is-out');
+    swapTimer = setTimeout(function () { paint(k); swap.classList.remove('is-out'); }, 170);
+  }
+  opts.forEach(function (o, i) {
+    o.addEventListener('click', function () { choose(o.getAttribute('data-k')); });
+    o.addEventListener('keydown', function (e) {
+      var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = opts[(i + d + opts.length) % opts.length];
+      n.focus(); choose(n.getAttribute('data-k'));
+    });
+  });
+  select.addEventListener('change', function () {
+    var op = select.options[select.selectedIndex]; choose(op.getAttribute('data-k'), true);
+  });
+})();
+</script>
+</body>
+</html>
